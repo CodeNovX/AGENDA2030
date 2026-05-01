@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Obiettivo 14 - Vita Sott'acqua</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style/style.css"/>
+  <style>
+    :root {
+      --goal-color: #28a7e3;
+      --goal-dark: #0b7fc2;
+      --goal-deep: #065d93;
+      --goal-light: #edf8fe;
+    }
+
+    .goal-hero {
+      padding-top: 80px;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      background: #043a5d;
+    }
+
+    .goal-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, var(--goal-color) 0%, var(--goal-dark) 55%, var(--goal-deep) 100%);
+      opacity: 0.95;
+    }
+
+    .goal-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      width: 100%;
+      padding: 0 40px 80px;
+    }
+
+    .goal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 99px;
+      padding: 6px 16px 6px 8px;
+      margin-bottom: 28px;
+    }
+
+    .goal-badge-num {
+      width: 28px;
+      height: 28px;
+      background: white;
+      color: var(--goal-color);
+      border-radius: 50%;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .goal-badge span {
+      color: rgba(255,255,255,0.92);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .goal-hero-content h1 {
+      font-family: "Times New Roman", Times, serif;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 1.05;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .goal-hero-content .subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.82);
+      font-weight: 300;
+      font-style: italic;
+      max-width: 640px;
+    }
+
+    .page-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .content-section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .content-section:last-child {
+      border-bottom: none;
+    }
+
+    .content-section .section-label {
+      color: var(--goal-color);
+      border-color: var(--goal-color);
+      opacity: 0.85;
+    }
+
+    .content-section h2 {
+      font-family: "Times New Roman", Times, serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      line-height: 1.15;
+      margin: 14px 0 24px;
+      color: var(--text-primary);
+    }
+
+    .content-section p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 680px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 28px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 32px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .why-card {
+      background: var(--goal-light);
+      border-radius: 14px;
+      padding: 24px;
+      border-left: 4px solid var(--goal-color);
+    }
+
+    .why-card h3 {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
+    .section-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .why-image {
+      width: 112%;
+      max-width: 540px;
+      margin: 0 auto;
+      justify-self: center;
+      align-self: center;
+    }
+
+    .goal-inline-image {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      display: block;
+      margin: 36px auto 0;
+      border-radius: 0;
+    }
+
+    .key-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .key-card {
+      background: var(--goal-light);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .key-num {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: var(--goal-color);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .key-card strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .key-card span {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .stats-section {
+      background: var(--off-white);
+      padding: 80px 0;
+    }
+
+    .stats-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 14px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 2.4rem;
+      color: var(--goal-color);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .world-text {
+      margin-top: 40px;
+    }
+
+    .world-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      font-weight: 300;
+      margin-bottom: 14px;
+      max-width: 680px;
+    }
+
+    .highlight-quote {
+      border-left: 4px solid var(--goal-color);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: var(--goal-light);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .highlight-quote p {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-primary);
+      font-weight: 400;
+      margin: 0;
+      max-width: none;
+    }
+
+    .action-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 32px;
+      align-items: start;
+      margin-top: 32px;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .action-card {
+      background: white;
+      border-radius: 14px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .action-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+
+    .action-icon {
+      font-size: 1.75rem;
+      margin-bottom: 14px;
+      display: block;
+      color: var(--goal-dark);
+    }
+
+    .action-card h3 {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .action-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: none;
+    }
+
+    .action-image {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 0;
+      display: block;
+    }
+
+    .goal-footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 300;
+    }
+
+    @media (max-width: 680px) {
+      .page-content { padding: 0 20px; }
+      .stats-inner  { padding: 0 20px; }
+      .intro-grid   { grid-template-columns: 1fr; }
+      .two-col      { grid-template-columns: 1fr; }
+      .why-grid     { grid-template-columns: 1fr; }
+      .key-grid     { grid-template-columns: 1fr; }
+      .stats-grid   { grid-template-columns: 1fr 1fr; }
+      .action-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="Index.html" class="nav-logo">
+      <img src="logoAgenda2030-removebg-preview.png" alt="logo" class="nav-icon">
+    </a>
+  </nav>
+
+  <section class="goal-hero">
+    <div class="goal-hero-bg"></div>
+    <div class="goal-hero-content">
+      <div class="goal-badge">
+        <div class="goal-badge-num">14</div>
+        <span>Agenda 2030 - SDG 14</span>
+      </div>
+      <h1>Obiettivo 14:<br>Vita Sott'acqua</h1>
+      <p class="subtitle">"Proteggiamo i nostri oceani. La salute del mare e' la salute del nostro pianeta."</p>
+    </div>
+  </section>
+
+  <div class="page-content">
+    <section class="content-section">
+      <span class="section-label">Cos'e'</span>
+      <h2>L'Obiettivo 14</h2>
+
+      <div class="intro-grid">
+        <p>
+          L'Obiettivo 14 (SDG 14) dell'Agenda 2030 punta a conservare e utilizzare in modo durevole gli oceani,
+          i mari e le risorse marine. Gli oceani coprono il 70% del pianeta, regolano il clima e forniscono il
+          cibo e l'ossigeno che respiriamo. Proteggerli non e' un'opzione, e' una necessita' per la nostra sopravvivenza.
+        </p>
+        <img src="goal14photo.png" alt="Obiettivo 14 vita sott'acqua" class="section-image">
+      </div>
+    </section>
+
+    <section class="content-section">
+      <span class="section-label">Perche' e' importante</span>
+      <h2>Il Mare Tiene in Vita il Pianeta</h2>
+
+      <div class="two-col">
+        <div>
+          <div class="why-grid">
+            <div class="why-card">
+              <h3>Assorbe CO2</h3>
+              <p>Gli oceani assorbono circa il 30% dell'anidride carbonica prodotta dagli umani, mitigando il riscaldamento globale.</p>
+            </div>
+            <div class="why-card">
+              <h3>Sostiene miliardi di persone</h3>
+              <p>Oltre 3 miliardi di persone dipendono dalla biodiversita' marina e costiera per il loro sostentamento.</p>
+            </div>
+            <div class="why-card">
+              <h3>Lavoro e futuro</h3>
+              <p>La pesca e l'acquacoltura danno lavoro a milioni di persone. Un mare sano garantisce risorse ittiche per le generazioni future.</p>
+            </div>
+            <div class="why-card">
+              <h3>Regolazione del clima</h3>
+              <p>Gli oceani trasportano calore dall'equatore ai poli, rendendo la Terra abitabile.</p>
+            </div>
+          </div>
+        </div>
+
+        <img src="pic1goal14.jpeg" alt="Importanza degli oceani" class="section-image why-image">
+      </div>
+    </section>
+
+    <section class="content-section">
+      <span class="section-label">Punti chiave</span>
+      <h2>Gli Obiettivi Specifici</h2>
+
+      <div class="key-grid">
+        <div class="key-card">
+          <div class="key-num">1</div>
+          <div>
+            <strong>Ridurre l'inquinamento</strong>
+            <span>Prevenire e ridurre drasticamente l'inquinamento marino, specialmente quello da plastica e i rifiuti prodotti dalle attivita' terrestri.</span>
+          </div>
+        </div>
+        <div class="key-card">
+          <div class="key-num">2</div>
+          <div>
+            <strong>Proteggere gli ecosistemi</strong>
+            <span>Gestire in modo sostenibile gli habitat marini per evitare impatti negativi e ripristinare quelli danneggiati.</span>
+          </div>
+        </div>
+        <div class="key-card">
+          <div class="key-num">3</div>
+          <div>
+            <strong>Stop alla sovrapesca</strong>
+            <span>Regolare la pesca in modo scientifico per porre fine alla pesca eccessiva, illegale e distruttiva.</span>
+          </div>
+        </div>
+        <div class="key-card">
+          <div class="key-num">4</div>
+          <div>
+            <strong>Aree protette</strong>
+            <span>Aumentare la superficie delle zone marine protette per salvaguardare la biodiversita'.</span>
+          </div>
+        </div>
+        <div class="key-card">
+          <div class="key-num">5</div>
+          <div>
+            <strong>Contrastare l'acidificazione</strong>
+            <span>Ridurre al minimo gli effetti dell'acidificazione degli oceani causata dall'aumento delle emissioni di CO2.</span>
+          </div>
+        </div>
+        <div class="key-card">
+          <div class="key-num">6</div>
+          <div>
+            <strong>Sostegno ai piccoli pescatori</strong>
+            <span>Garantire l'accesso alle risorse e ai mercati per i pescatori artigianali su piccola scala.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="stats-section">
+    <div class="stats-inner">
+      <span class="section-label" style="color:var(--goal-color); border-color:var(--goal-color);">A che punto siamo</span>
+      <h2 style="font-family:'Times New Roman', Times, serif; font-size:clamp(1.7rem,3.5vw,2.4rem); margin:14px 0 8px;">In Italia</h2>
+      <p style="font-size:1rem; color:var(--text-secondary); font-weight:300; line-height:1.7; margin-bottom:0;">
+        Secondo il Rapporto ASviS 2024, l'Italia mostra segnali contrastanti. Sebbene la superficie delle aree marine protette sia aumentata,
+        la qualita' delle acque costiere soffre ancora per la cattiva depurazione.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">600+</div>
+          <div class="stat-label">In media si trovano oltre 600 rifiuti ogni 100 metri di spiaggia e la stragrande maggioranza e' plastica.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">70%</div>
+          <div class="stat-label">Il Mediterraneo resta tra i mari piu' sfruttati al mondo: circa il 70% degli stock ittici monitorati e' pescato oltre i limiti sostenibili.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">32%</div>
+          <div class="stat-label">Quasi il 32% delle spiagge italiane e' soggetto a erosione, fenomeno accelerato dall'innalzamento del livello del mare.</div>
+        </div>
+      </div>
+
+      <img src="pic3goal14.jpeg" alt="Situazione dei mari in Italia" class="goal-inline-image">
+
+      <div class="world-text">
+        <h2 style="font-family:'Times New Roman', Times, serif; font-size:clamp(1.7rem,3.5vw,2.4rem); margin-bottom:20px;">Nel Mondo</h2>
+        <p>Esistono enormi "isole" di rifiuti galleggianti negli oceani; si stima che entro il 2050 ci sara' piu' plastica che pesce in mare, in termini di peso.</p>
+        <p>Le ondate di calore marine sono sempre piu' frequenti, causando lo sbiancamento dei coralli in tutto il mondo.</p>
+        <p>Le aree oceaniche prive di ossigeno, dove la vita marina non puo' sopravvivere, sono raddoppiate dal 1950.</p>
+
+        <div class="highlight-quote">
+          <p>Proteggere il mare significa proteggere il clima, il cibo, la biodiversita' e l'equilibrio del pianeta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-content">
+    <section class="content-section">
+      <span class="section-label">Cosa possiamo fare</span>
+      <h2>Il Tuo Contributo</h2>
+
+      <div class="action-layout">
+        <div class="action-grid">
+          <div class="action-card">
+            <span class="action-icon">1</span>
+            <h3>Riduci la plastica</h3>
+            <p>Usa borracce e sacchetti riutilizzabili. Evita i prodotti monouso che finiscono inevitabilmente in mare.</p>
+          </div>
+          <div class="action-card">
+            <span class="action-icon">2</span>
+            <h3>Mangia responsabilmente</h3>
+            <p>Scegli pesce proveniente da pesca sostenibile e cerca i marchi di certificazione come MSC.</p>
+          </div>
+          <div class="action-card">
+            <span class="action-icon">3</span>
+            <h3>Partecipa</h3>
+            <p>Unisciti a campagne di pulizia delle spiagge o sostieni organizzazioni che proteggono i mari.</p>
+          </div>
+          <div class="action-card">
+            <span class="action-icon">4</span>
+            <h3>Risparmia energia</h3>
+            <p>Ridurre la tua impronta di carbonio aiuta a limitare l'acidificazione degli oceani.</p>
+          </div>
+        </div>
+
+        <img src="pic4goal14.jpeg" alt="Azioni per proteggere il mare" class="action-image">
+      </div>
+    </section>
+  </div>
+
+  <footer class="goal-footer">
+    <p>Agenda 2030 &nbsp;&middot;&nbsp; Obiettivo 14 - Vita Sott'acqua</p>
+  </footer>
+</body>
+</html>
